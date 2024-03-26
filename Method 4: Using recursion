@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+// Make sure that have knowledge about ASCII
+// if not please check - https://prepinsta.com/ascii-table/
+int toggleString(char *str)
+{
+	static int i=0;
+	if(str[i])
+    {
+        // if b/w a-z
+        if(str[i] >= 65 && str[i] <= 90)
+            str[i]+=32;
+        
+        // if b/w A-Z
+        else if(str[i] >= 97 && str[i] <= 122)
+            str[i]-=32;
+         
+        i++;
+        toggleString(str);
+    }  
+}
+int main()
+{
+    char str[1000];  
+  
+    printf("Enter the string: ");
+    scanf("%[^\n]s", str);
+    
+    toggleString(str);
+     
+    printf("String After toggling ='%s'\n",str);
+    
+    return 0;
+ }
